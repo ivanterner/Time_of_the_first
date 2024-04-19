@@ -1,3 +1,4 @@
+```console
 yum install bind
 
 vim /etc/named.conf 
@@ -23,7 +24,7 @@ options {
 named-checkconf /etc/named.conf 
 systemctl start named
 systemctl enable named
-
+```
 
 
 
