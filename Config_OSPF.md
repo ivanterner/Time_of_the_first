@@ -51,8 +51,7 @@ R-FR
 network 10.5.5.0/30 area 0
 default-information originate
 passive-interface default enp1s0
-
-'''
+```
 
 
 
