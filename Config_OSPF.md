@@ -1,3 +1,4 @@
+```console
 yum install frr.x86_64
 
 vim /etc/frr/daemons
@@ -50,7 +51,7 @@ R-FR
 network 10.5.5.0/30 area 0
 default-information originate
 passive-interface default enp1s0
-
+'''
 
 
 
