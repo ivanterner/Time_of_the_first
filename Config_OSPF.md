@@ -37,6 +37,8 @@ systemctl enable frr
 LFR
 vtysh
 configure terminal
+interface tun1
+ip ospf network broadcast
 router ospf
 passive-interface default enp1s0
 passive-interface default enp7s0
@@ -47,10 +49,30 @@ network 10.5.5.0/30 area 0
 default-information originate 
 
 
+
+L-RTR-A
+vtysh
+configure terminal
+router ospf
+network 172.16.50.0/30 area 0
+network 172.16.100.0/24 area 0
+default-information originate
+
+
+
 R-FR
+vtysh
+configure terminal
+interface tun1
+ip ospf network broadcast
+router ospf
 network 10.5.5.0/30 area 0
 default-information originate
 passive-interface default enp1s0
+
+
+
+
 ```
 
 
