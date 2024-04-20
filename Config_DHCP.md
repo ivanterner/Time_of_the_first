@@ -9,12 +9,15 @@ cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf
 #Настраиваем сервер
 vim dhcpd.conf
 
+#Данными строчками задается доменное имя и DNS-сервер:
 option domain-name "skill39.wsr";
 option domain-name-servers 172.16.20.10;
 
+#Данные строки настраивают время аренды IP-адреса:
 default-lease-time 600;
 max-lease-time 7200;
 
+#Настройка опции динамического обновления DNS:
 ddns-update-style interim;
 ddns-updates on;
 
@@ -24,6 +27,10 @@ subnet 172.16.20.0 netmask 255.255.255.0 {
 }
 subnet 172.16.50.0 netmask 255.255.255.0 {
 }
+
+#Данными строками указываются подсети, которые будет обслуживать DNS. В их
+#настройке указывается диапазон адресов с ключевым словом range и список IP-адресов
+#маршрутизаторов для клиентской сети ключевым словом option routers:
 subnet 172.16.100.0 netmask 255.255.255.0 {
   range 172.16.100.65 172.16.100.75;
   option routers 172.16.100.1;
