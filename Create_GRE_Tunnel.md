@@ -1,7 +1,7 @@
 ![Карта сети ](/gre.png)             
 
 ```console
-# Содать файлы на серверах /etc/gre.up
+#Содать файлы на серверах /etc/gre.up
 #L-WF
 #!/bin/bash
 ip tunnel add tun1 mode gre local 10.10.10.1 remote  20.20.20.100 ttl 255
