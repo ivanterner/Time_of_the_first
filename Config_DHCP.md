@@ -1,9 +1,12 @@
 ![Карта сети ](/dhcp.png)
 ```console
+#Установка dcp сервера
 yum install dhcp-server.x86_64
 
+#Копирем конфиг
 cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf
-cd /etc/dhcp/
+
+#Настраиваем сервер
 vim dhcpd.conf
 
 option domain-name "skill39.wsr";
