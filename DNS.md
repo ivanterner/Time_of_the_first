@@ -1,9 +1,12 @@
 ```console
+#Устанавливаем bind
 yum install bind
-
-vim /etc/named.conf 
-
-
+#Редактируем файл vim /etc/named.conf
+#Слушаем на всех интрфейсач listen-on port 53 { any; };
+#Отвечаем на запросы любым клиентам allow-query     { any; };
+#Сервер уловной пресылки DNS forwarders { 10.10.10.10; };
+#Включение рекурсии recursion yes;
+#Отключение dns-sec
 options {
 	listen-on port 53 { any; };
 	listen-on-v6 port 53 { ::1; };
