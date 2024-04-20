@@ -1,3 +1,4 @@
+![Карта сети ](/ospf.png)
 ```console
 #Установка frr
 yum install frr.x86_64
