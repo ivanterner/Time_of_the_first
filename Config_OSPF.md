@@ -1,6 +1,7 @@
 ```console
 #Установка frr
 yum install frr.x86_64
+
 #Настройка демона, включаем zebra=yes и ospfd=yes
 #vim /etc/frr/daemons
 zebra=yes
@@ -45,8 +46,6 @@ network 172.16.50.0/24 area 0
 network 172.16.55.0/30 area 0
 network 10.5.5.0/30 area 0
 default-information originate 
-
-
 
 #Настройка маршрутизатиора L-RTR-A
 vtysh
