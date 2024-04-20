@@ -20,10 +20,7 @@ options {
 	forwarders { 10.10.10.10; };
   recursion yes;
   dnssec-validation no;
-
-
-
-
+#Проверям конфиг, стратуем службу.
 named-checkconf /etc/named.conf 
 systemctl start named
 systemctl enable named
