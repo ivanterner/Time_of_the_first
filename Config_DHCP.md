@@ -43,4 +43,28 @@ INTERFACESv4="enp1s0 enp7s0"
 systemctl start dhcpd.service
 systemctl enable dhcpd.service 
 
+
+yum install dhcp-relay.x86_64
+
+vim /etc/systemd/system/multi-user.target.wants/dhcrelay.service
+[Unit]
+Description=DHCP Relay Agent Daemon
+Documentation=man:dhcrelay(8)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/dhcrelay -d --no-pid  172.16.50.2 -i enp1s0 enp7s0
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
+
+
+systemctl enable dhcrelay.service 
+systemctl start dhcrelay.service 
+systemctl status dhcrelay.service 
+
+
 ```
