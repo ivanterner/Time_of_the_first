@@ -1,6 +1,7 @@
 ```console
 #Устанавливаем bind
 yum install bind
+
 #Редактируем файл vim /etc/named.conf
 #Слушаем на всех интрфейсач listen-on port 53 { any; };
 #Отвечаем на запросы любым клиентам allow-query     { any; };
@@ -20,6 +21,7 @@ options {
 	forwarders { 10.10.10.10; };
   recursion yes;
   dnssec-validation no;
+
 #Проверям конфиг, стратуем службу.
 named-checkconf /etc/named.conf 
 systemctl start named
