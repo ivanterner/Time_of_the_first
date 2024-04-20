@@ -39,16 +39,17 @@ host l-cli-b {
   fixed-address 172.16.200.61;
 }
 
-
+#Настраваем запуск на интефейсах 
 vim /etc/default/isc-dhcp-server
 INTERFACESv4="enp1s0 enp7s0"
 
+#Запускаем демон
 systemctl start dhcpd.service
 systemctl enable dhcpd.service 
 
-
+#Установка сервера пересылки
 yum install dhcp-relay.x86_64
-
+#Настраивается через systemd
 vim /etc/systemd/system/multi-user.target.wants/dhcrelay.service
 [Unit]
 Description=DHCP Relay Agent Daemon
@@ -64,7 +65,7 @@ StandardError=null
 [Install]
 WantedBy=multi-user.target
 
-
+#Запускаем демон
 systemctl enable dhcrelay.service 
 systemctl start dhcrelay.service 
 systemctl status dhcrelay.service 
