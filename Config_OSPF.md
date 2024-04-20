@@ -58,7 +58,13 @@ network 172.16.50.0/30 area 0
 network 172.16.100.0/24 area 0
 default-information originate
 
-
+L-RTR-B
+vtysh
+configure terminal
+router ospf
+network 172.16.55.0/30 area 0
+network 172.16.200.0/24 area 0
+default-information originate
 
 R-FR
 vtysh
