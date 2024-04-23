@@ -28,4 +28,33 @@ named-checkconf /etc/named.conf
 systemctl start named
 systemctl enable named
 
+
+
+
+
+
+---
+- name: Gather IP addresses and hostnames
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Gather IP addresses and hostnames
+      debug:
+        msg: "{{ inventory_hostname }} - {{ ansible_default_ipv4.address }}"
+      register: host_info
+
+- name: Save output to file
+  hosts: localhost
+  tasks:
+    - name: Save output to file
+      copy:
+        content: "{{ host_info.results | map(attribute='msg') | join('\n') }}"
+        dest: /etc/ansible/output.yaml
+
+
+
+
+
+
 ```
