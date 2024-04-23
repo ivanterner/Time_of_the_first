@@ -31,7 +31,7 @@ systemctl enable named
 
 
 
-
+Ansible
 
 ---
 - name: Gather IP addresses and hostnames
@@ -53,7 +53,42 @@ systemctl enable named
         dest: /etc/ansible/output.yaml
 
 
+LVM
 
+
+
+Вот инструкции по настройке дисковой подсистемы на серверах SRV-HQ и SRV-BR:
+
+Настройка зеркалируемого LVM тома на SRV-HQ:
+Подготовка дисков:
+Убедитесь, что у вас есть два неразмеченных жестких диска.
+Создайте физический том (PV) на каждом диске: pvcreate /dev/sdX (где /dev/sdX - ваш жесткий диск).
+Создайте группу томов (VG) на основе этих физических томов: vgcreate vg_mirror /dev/sdX /dev/sdY.
+Создание зеркалируемого LVM тома:
+Создайте логический том (LV) с зеркалированием: lvcreate -m1 -n lv_mirror -l 100%FREE vg_mirror.
+Форматируйте новый том: mkfs.ext4 /dev/vg_mirror/lv_mirror.
+Настройка автоматического монтирования:
+Добавьте запись в файл /etc/fstab для автоматического монтирования: /dev/vg_mirror/lv_mirror /opt/data ext4 defaults 0 2.
+Настройка stripped LVM тома с шифрованием на SRV-BR:
+Подготовка дисков:
+Убедитесь, что у вас есть два неразмеченных жестких диска.
+Создайте физический том (PV) на каждом диске: pvcreate /dev/sdX.
+Создайте группу томов (VG) на основе этих физических томов: vgcreate vg_stripped /dev/sdX /dev/sdY.
+Создание stripped LVM тома:
+Создайте логический том (LV) с распределением данных на несколько дисков: lvcreate -i2 -I64 -L 100%FREE -n lv_stripped vg_stripped.
+Зашифруйте созданный том: cryptsetup luksFormat /dev/vg_stripped/lv_stripped.
+Откройте зашифрованный том: cryptsetup luksOpen /dev/vg_stripped/lv_stripped lv_stripped.
+Создайте файловую систему: mkfs.ext4 /dev/mapper/lv_stripped.
+Настройка автоматического монтирования:
+Добавьте запись в файл /etc/crypttab для автоматического открытия зашифрованного тома: lv_stripped UUID=<UUID_зашифрованного_тома> none luks.
+Добавьте запись в файл /etc/fstab для автоматического монтирования: /dev/mapper/lv_stripped /opt/data ext4 defaults 0 2.
+Пожалуйста, не забудьте заменить /dev/sdX на соответствующие устройства вашего сервера и <UUID_зашифрованного_тома> на UUID вашего зашифрованного тома.
+
+
+
+
+
+Message ChatGPT…
 
 
 
