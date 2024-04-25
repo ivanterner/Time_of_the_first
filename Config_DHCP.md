@@ -83,6 +83,10 @@ systemctl status dhcrelay.service
 
 
 5.
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+
+
 
 User
 1. Установите Docker и Docker Compose.
