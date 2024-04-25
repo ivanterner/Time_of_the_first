@@ -101,4 +101,49 @@ COPY name.txt .
 
 # При запуске контейнер выполняет команду echo для вывода приветственного сообщения и содержимого файла name.txt
 CMD ["sh", "-c", "echo 'Hello, FIRPO! Greetings from' && cat name.txt"]
+
+
+
+
+
+Давайте создадим файл wiki.yml для настройки приложения MediaWiki с использованием Docker Compose, учитывая указанные требования:version: '3.8'
+
+services:
+  # Сервис MediaWiki
+  wiki:
+    image: mediawiki
+    container_name: wiki
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      # Монтируем файл LocalSettings.php из домашней папки пользователя redos
+      - /home/redos/LocalSettings.php:/var/www/html/LocalSettings.php
+    networks:
+      - app_net
+
+  # Сервис базы данных MySQL
+  db:
+    image: mysql
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: mediawiki
+      MYSQL_USER: wiki
+      MYSQL_PASSWORD: P@ssw0rd
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+    volumes:
+      # Создаем volume для хранения данных базы
+      - dbvolume:/var/lib/mysql
+    networks:
+      - app_net
+
+volumes:
+  # Volume для хранения данных базы
+  dbvolume:
+
+networks:
+  # Создаем отдельную сеть для связи между приложением и базой данных
+  app_net:
+
 ```
