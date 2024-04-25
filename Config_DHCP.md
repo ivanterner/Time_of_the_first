@@ -78,4 +78,57 @@ systemctl start dhcrelay.service
 systemctl status dhcrelay.service 
 
 
+
+
+
+
+5.
+
+User
+1. Установите Docker и Docker Compose.
+2. Создайте локальный Docker Registry.
+3. В домашней директории хоста создайте файл name.txt и запишите в него строку experts.
+4. Напишите Dockerfile для приложения HelloFIRPO.
+1. В качестве базового образа используйте alpine
+2. Сделайте рабочей директорию /hello и скопируйте в неё name.txt
+3. Контейнер при запуске должен выполнять команду echo, которая выводит сообщение "Hello, FIRPO! Greetings from" и затем содержимое файла name.txt, после чего завершать свою работу.
+ChatGPT
+Вот Dockerfile для вашего приложения HelloFIRPO:
+
+Dockerfile
+Copy code
+# Используем alpine как базовый образ
+FROM alpine
+
+# Устанавливаем необходимые пакеты (можно пропустить, если они не нужны)
+RUN apk update && apk add --no-cache \
+    bash \
+    && rm -rf /var/cache/apk/*
+
+# Устанавливаем рабочую директорию внутри контейнера
+WORKDIR /hello
+
+# Копируем файл name.txt из хоста в контейнер
+COPY name.txt .
+
+# Команда, которую выполнит контейнер при запуске
+CMD echo "Hello, FIRPO! Greetings from $(cat name.txt)"
+Теперь, чтобы собрать образ и запустить контейнер, следуйте этим шагам:
+
+Сохраните этот Dockerfile в файл с именем "Dockerfile" в вашей рабочей директории.
+Поместите файл name.txt в вашу домашнюю директорию на хосте.
+Соберите Docker-образ с помощью команды docker build:
+Copy code
+docker build -t hellofirpo .
+Здесь "hellofirpo" - имя образа, которое вы можете выбрать по своему усмотрению.
+Запустите контейнер с помощью команды docker run:
+arduino
+Copy code
+docker run --rm hellofirpo
+Опция --rm удаляет контейнер после его завершения, чтобы избежать накопления неиспользуемых контейнеров.
+Теперь при запуске контейнера вы увидите вывод "Hello, FIRPO! Greetings from experts".
+
+
+
+
 ```
