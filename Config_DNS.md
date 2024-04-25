@@ -88,8 +88,17 @@ LVM
 
 
 
-Message ChatGPT…
 
 
+# Используем alpine в качестве базового образа
+FROM alpine
 
+# Устанавливаем рабочую директорию
+WORKDIR /hello
+
+# Копируем файл name.txt в рабочую директорию контейнера
+COPY name.txt .
+
+# При запуске контейнер выполняет команду echo для вывода приветственного сообщения и содержимого файла name.txt
+CMD ["sh", "-c", "echo 'Hello, FIRPO! Greetings from' && cat name.txt"]
 ```
