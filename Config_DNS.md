@@ -69,9 +69,14 @@ $TTL 1D
 					1H	; retry
 					1W	; expire
 					3H )	; minimum
-	 	IN	NS	redos-01
+	 	IN	NS	redos-01.redos.lab.
+@		IN	A	192.168.100.6	
 redos-01 	IN	A	192.168.100.6
 redos-02	IN	A	192.168.100.7
+www		IN	A	192.168.100.6
+		IN	MX 10	mail
+mail          	IN      A      192.168.100.6
+
 
 #Создаем файл зоны 100.168.192.in-addr.arpa
 $TTL 1D
