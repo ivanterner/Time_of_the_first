@@ -1,17 +1,24 @@
-
+Устанавливаем bind
 ```console
-#Устанавливаем bind
 yum install bind
+```
+Редактируем файл vim /etc/named.conf
 
-#Редактируем файл vim /etc/named.conf
-#Слушаем на всех интрфейсач listen-on port 53 { any; };
-#Отвечаем на запросы любым клиентам allow-query     { any; };
-#Сервер уловной пресылки DNS forwarders { 10.10.10.10; };
-#Включение рекурсии recursion yes;
-#Отключение dnssec-validation no;;
-#Прямая зона zone "redos.lab."
-#Обратная зона zone "100.168.192.in-addr.arpa"
 
+Слушаем на всех интрфейсач listen-on port 53 { any; };
+
+Отвечаем на запросы любым клиентам allow-query     { any; };
+
+Сервер уловной пресылки DNS forwarders { 10.10.10.10; };
+
+Включение рекурсии recursion yes;
+
+Отключение dnssec-validation no;;
+
+Прямая зона zone "redos.lab."
+
+Обратная зона zone "100.168.192.in-addr.arpa"
+```console
 options {
 	listen-on port 53 { any; };
 	listen-on-v6 port 53 { ::1; };
@@ -89,14 +96,18 @@ $TTL 1D
 	 	IN	NS	redos-01.redos.lab.
 6	 	IN	PTR	redos-01.redos.lab.
 7		IN	PTR	redos-02.redos.lab.
-
-#Проверям конфиг.
+```
+Проверям конфиг.
+```console
 named-checkconf /etc/named.conf 
-#Проверяем файлы зон.
+```
+Проверяем файлы зон.
+```console
 named-checkzone 100.168.192.in-addr.arpa 100.168.192.in-addr.arpa
-named-checkzone redos.lab. redos.lab 
-#Стратуем службу.
+named-checkzone redos.lab. redos.lab
+``` 
+Стратуем службу.
+```console
 systemctl start named
 systemctl enable named
-
 ```
