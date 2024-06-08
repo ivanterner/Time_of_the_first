@@ -1,26 +1,12 @@
-Устанавливаем bind
+Устанавливаем bind.
 ```console
 yum install bind
 ```
-Редактируем файл vim /etc/named.conf
+Редактируем файл vim /etc/named.conf.
 
-
-Слушаем на всех интрфейсач listen-on port 53 { any; };
-
-Отвечаем на запросы любым клиентам allow-query     { any; };
-
-Сервер уловной пресылки DNS forwarders { 10.10.10.10; };
-
-Включение рекурсии recursion yes;
-
-Отключение dnssec-validation no;;
-
-Прямая зона zone "redos.lab."
-
-Обратная зона zone "100.168.192.in-addr.arpa"
 ```console
 options {
-	listen-on port 53 { any; };
+	listen-on port 53 { any; }; #Слушаем на всех интерфейсах 
 	listen-on-v6 port 53 { ::1; };
 	directory 	"/var/named";
 	dump-file 	"/var/named/data/cache_dump.db";
@@ -28,10 +14,10 @@ options {
 	memstatistics-file "/var/named/data/named_mem_stats.txt";
 	secroots-file	"/var/named/data/named.secroots";
 	recursing-file	"/var/named/data/named.recursing";
-	allow-query     { any; };
-	forwarders { 10.10.10.10; };
-  recursion yes;
-  dnssec-validation no;
+	allow-query     { any; }; #Отвечаем на запросы любым клиентам
+	forwarders { 10.10.10.10; }; #Сервер условной пересылки 
+  recursion yes; #Включение рекурсии
+  dnssec-validation no; #Отключение dnssec
 
 	managed-keys-directory "/var/named/dynamic";
 	geoip-directory "/usr/share/GeoIP";
@@ -54,12 +40,12 @@ zone "redos.lab." IN {
 	type master;
 	file "/var/named/redos.lab";
 };
-
+#Прямая зона
 zone "100.168.192.in-addr.arpa" IN {
         type master;
         file "/var/named/100.168.192.in-addr.arpa";
 };
-
+#Обратная зона
 zone "." IN {
 	type hint;
 	file "named.ca";
@@ -67,8 +53,9 @@ zone "." IN {
 
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
-
-#Создаем файл зоны redos.lab
+```
+Создаем файл зоны redos.lab.
+```console
 $TTL 1D
 @		IN SOA	redos.lab. redos-01 (
 					101	; serial
@@ -83,9 +70,9 @@ redos-02	IN	A	192.168.100.7
 www		IN	A	192.168.100.6
 		IN	MX 10	mail
 mail          	IN      A      192.168.100.6
-
-
-#Создаем файл зоны 100.168.192.in-addr.arpa
+```
+Создаем файл зоны 100.168.192.in-addr.arpa.
+```console
 $TTL 1D
 @		IN SOA	redos.lab. redos-01.redos.lab. (
 					102	; serial
