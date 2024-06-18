@@ -1,16 +1,16 @@
 ![Карта сети ](/dhcp.png)
 
-Установка dcp сервера
+Установка dcp сервера.
 ```console
 yum install dhcp-server.x86_64
 ```
 
-Копирем конфиг
+Копирем конфиг.
 ```console
 cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf
 ```
 
-Настраиваем сервер
+Настраиваем сервер.
 ```console
 vim dhcpd.conf
 
@@ -52,23 +52,23 @@ host l-cli-b {
 }
 ```
 
-Настраваем запуск на интефейсах 
+Настраваем запуск на интефейсах. 
 ```console
 vim /etc/default/isc-dhcp-server
 INTERFACESv4="enp1s0 enp7s0"
 ```
 
-Запускаем демон
+Запускаем демон.
 ```console
 systemctl start dhcpd.service
 systemctl enable dhcpd.service 
 ```
 
-Установка сервера пересылки
+Установка сервера пересылки.
 ```console
 yum install dhcp-relay.x86_64
 ```
-Настраивается через systemd
+Настраивается через systemd.
 ```console
 vim /etc/systemd/system/multi-user.target.wants/dhcrelay.service
 [Unit]
@@ -85,7 +85,7 @@ StandardError=null
 [Install]
 WantedBy=multi-user.target
 ```
-Запускаем демон
+Запускаем демон.
 ```console
 systemctl enable dhcrelay.service 
 systemctl start dhcrelay.service 
