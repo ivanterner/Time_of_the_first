@@ -1,11 +1,10 @@
-Компилируем и копируем на хост
-
+Компилируем и копируем на хост:
 postfix_exporter
 prometheus
 promtool
 копируем бинарники в /usr/local/bin/
 
-Создаем сервис для Прометея
+Создаем сервис для Прометея.
 ```console
 cat /etc/systemd/system/prometheus.service
 
@@ -36,7 +35,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
-Создаем сервис для Postfix_eprorter
+Создаем сервис для Postfix_eprorter.
 ```console
 cat /etc/systemd/system/postfix_exporter.service
 [Unit]
@@ -100,26 +99,26 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9154']
 ```
-Создаем конфиг файл авторизации
+Создаем конфиг файл авторизации.
 ```console
 cat /etc/prometheus/web.yml
 
 basic_auth_users:
        admin: 'Твой пароль зашифрованый библиотекой bcrypt'
 ```
-Стартуем сервисы
+Стартуем сервисы.
 ```console
 systemctl start prometheus
 systemctl start postfix_exporter
 ```
 
-Добавляем в автозагрузку
+Добавляем в автозагрузку.
 ```console
 systemctl enable prometheus
 systemctl enable postfix_exporter
 ```
 
-Для BIND
+Для BIND.
 ```console
 [Unit]
 Description=Prometheus
