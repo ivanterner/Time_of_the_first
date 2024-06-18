@@ -6,6 +6,7 @@ promtool
 копируем бинарники в /usr/local/bin/
 
 Создаем сервис для Прометея
+```console
 cat /etc/systemd/system/prometheus.service
 
 [Unit]
@@ -34,8 +35,9 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 Создаем сервис для Postfix_eprorter
+```console
 cat /etc/systemd/system/postfix_exporter.service
 [Unit]
 Description=Prometheus
@@ -97,23 +99,28 @@ scrape_configs:
   - job_name: postfix
     static_configs:
       - targets: ['localhost:9154']
-
+```
 Создаем конфиг файл авторизации
+```console
 cat /etc/prometheus/web.yml
 
 basic_auth_users:
        admin: 'Твой пароль зашифрованый библиотекой bcrypt'
+```
 Стартуем сервисы
+```console
 systemctl start prometheus
 systemctl start postfix_exporter
+```
 
 Добавляем в автозагрузку
+```console
 systemctl enable prometheus
 systemctl enable postfix_exporter
-
+```
 
 Для BIND
-
+```console
 [Unit]
 Description=Prometheus
 Documentation=https://github.com/digitalocean/bind_exporter
@@ -138,4 +145,4 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
