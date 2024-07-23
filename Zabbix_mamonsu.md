@@ -17,7 +17,7 @@ host    all             mamonsu     127.0.0.1/32            md5
 ```
 
 Добавить в агент /etc/mamonsu/agent.conf.
-```console
+```yaml
 [postgres]
 enabled = True
 user = mamonsu
@@ -37,22 +37,22 @@ re_send = False
 ```
 
 Подготовить БД.
-```console
+```bash
 mamonsu bootstrap -M mamonsu -x -c /etc/mamonsu/agent.conf -d mamonsu -U postgres --host 127.0.0.1 --port 5432
 ```
 
 Запустить сервис и добавить в автозагрузку.
-```console
+```bash
 sudo systemctl start mamonsu.service
 sudo systemctl enable mamonsu.service
 ```
 
 Команда для просмотра метрик в консоли.
-```console
+```bash
 sudo mamonsu agent metric-list
 ```
 Подключить библиотеки в файле postgresql.conf или через ppem.
-```console
+```yaml
 shared_preload_libraries = 'online_analyze, plantuner, pg_stat_statements, pgpro_stats'
 ```
 Подключить шаблон в zabbix.
