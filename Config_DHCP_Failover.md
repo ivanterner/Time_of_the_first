@@ -36,12 +36,12 @@ max-lease-time 86400; # 1 день
 update-static-leases on;
 one-lease-per-client on;
 
-#omapi-port 7911;
-#omapi-key omapi_key;
-#key omapi_key {
-#     algorithm hmac-md5;
-#     secret yousecret==; # сформируйте секретный ключ с помощью любого генератора, указав тип шифрования hmac-md5
-#}
+omapi-port 7911;
+omapi-key omapi_key;
+key omapi_key {
+     algorithm hmac-md5;
+     secret yousecret==; # сформируйте секретный ключ с помощью любого генератора, указав тип шифрования hmac-md5
+}
 
 subnet 192.168.100.0 netmask 255.255.255.0 {
   option subnet-mask 255.255.255.0;
