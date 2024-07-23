@@ -183,7 +183,7 @@ sudo omapi-keygen
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
 ```console
 key omapi_key {
-    algorithm HMAC-MD5;
+    algorithm hmac-md5;
     secret "your_generated_key";
 };
 
