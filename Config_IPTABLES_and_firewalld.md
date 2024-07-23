@@ -1,17 +1,17 @@
-```console
-#Настройка iptables
-yum install iptables-services.noarch
 
+Настройка iptables
+```bash
+yum install -u iptables-services.noarch
+```
+```bash
 iptables -t nat -A POSTROUTING -o enp1s0 -j MASQUERADE
-
 iptables -t nat -A PREROUTING -p udp --dport 53 -i enp1s0 -j DNAT --to-destination 172.16.20.10
-
 iptables-save >> /etc/sysconfig/iptables
-
 systemctl enable iptables.service
-
 systemctl start iptables.service
+```
 
+```yaml
 config
 *filter
 :INPUT ACCEPT [0:0]
@@ -30,9 +30,10 @@ COMMIT
 -A POSTROUTING -o enp1s0 -j MASQUERADE
 -A PREROUTING -i enp1s0 -p udp -m udp --dport 53 -j DNAT --to-destination 172.16.20.10
 COMMIT
+```
 
-
-#Настройка firewalld
+Настройка firewalld
+```bash
 systemctl start firewalld.service 
 systemctl enable firewalld.service 
 
@@ -43,8 +44,6 @@ firewall-cmd --permanent --zone=public --add-service=ssh
 firewall-cmd --permanent --zone=public --add-protocol=gre
 firewall-cmd --permanent --zone=public --add-protocol=esp
 firewall-cmd --permanent --zone=public --add-port=47/tcp
-
 systemctl restart firewalld
 firewall-cmd --zone=public --list-all
-
 ```
