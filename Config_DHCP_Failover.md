@@ -81,7 +81,7 @@ omapi-key omapi_key;
 key omapi_key {
      # сформируйте секретный ключ с помощью любого генератора, указав тип шифрования hmac-md5
      algorithm hmac-md5;
-     secret a6d79e096b7055ff51e5756c77947ab5==;
+     secret yousecret==;
 }
 
 subnet 192.168.100.0 netmask 255.255.255.0 {
