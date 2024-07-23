@@ -40,8 +40,9 @@ one-lease-per-client on;
 omapi-port 7911;
 omapi-key omapi_key;
 key omapi_key {
+     # сформируйте секретный ключ с помощью любого генератора, указав тип шифрования hmac-md5
      algorithm hmac-md5;
-     secret your_generated_key; # сформируйте секретный ключ с помощью любого генератора, указав тип шифрования hmac-md5
+     secret your_generated_key; 
 }
 
 subnet 192.168.100.0 netmask 255.255.255.0 {
