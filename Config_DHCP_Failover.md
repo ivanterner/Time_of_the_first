@@ -1,7 +1,7 @@
 [Manual] 
 ["https://redos.red-soft.ru/base/server-configuring/dhcp/failover-dhcp/" , "https://infra.gnulinux.pro/ru/latest/infra/11/11._DHCP_сервер_ч.2.html#id1"]
 	
-[Install] 
+[Install]\ 
 Установка отказоустойчивого DHCP сервера на Linux может быть достигнута с использованием пакета ISC DHCP (Internet Systems Consortium DHCP) в сочетании с DHCP Failover механизмом. Этот механизм позволяет двум серверам совместно обслуживать один диапазон адресов, что обеспечивает непрерывную работу даже при выходе из строя одного из серверов.
 Ниже приводится пошаговая инструкция по настройке отказоустойчивого DHCP сервера на двух серверах (dhcp-01 и dhcp-02).
 
