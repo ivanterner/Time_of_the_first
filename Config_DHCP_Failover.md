@@ -182,7 +182,7 @@ OMAPI (Object Management API)
 sudo omapi-keygen
 ```
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
-```console
+```code
 key omapi_key {
     algorithm hmac-md5;
     secret "your_generated_key";
@@ -196,7 +196,7 @@ omapi-port 7911;
 Пример резервного копирования с использованием cron и tar:
 
 Создайте скрипт резервного копирования:
-```console
+```code
 #!/bin/bash
 tar -czf /backup/dhcpd-backup-$(date +\%F).tar.gz /etc/dhcp /var/lib/dhcp
 ```
