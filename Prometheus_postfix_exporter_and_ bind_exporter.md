@@ -35,6 +35,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
 Создаем сервис для Postfix_eprorter.
 ```yaml
 cat /etc/systemd/system/postfix_exporter.service
@@ -61,11 +62,12 @@ Restart=always
 WantedBy=multi-user.target
 ```
 Перечитываем systemd
+```bash
 systemctl daemon-reload
+```
 
-Создаем конфиг для Прометея
-cat /etc/prometheus/prometheus.yml
-
+Создаем конфиг для Прометея /etc/prometheus/prometheus.yml
+```yaml
 # my global config
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -100,27 +102,25 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9154']
 ```
-Создаем конфиг файл авторизации.
-```console
-cat /etc/prometheus/web.yml
-
+Создаем конфиг файл авторизации /etc/prometheus/web.yml
+```yaml
 basic_auth_users:
        admin: 'Твой пароль зашифрованый библиотекой bcrypt'
 ```
 Стартуем сервисы.
-```console
+```bash
 systemctl start prometheus
 systemctl start postfix_exporter
 ```
 
 Добавляем в автозагрузку.
-```console
+```bash
 systemctl enable prometheus
 systemctl enable postfix_exporter
 ```
 
 Для BIND.
-```console
+```yaml
 [Unit]
 Description=Prometheus
 Documentation=https://github.com/digitalocean/bind_exporter
