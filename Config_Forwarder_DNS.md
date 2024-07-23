@@ -5,7 +5,7 @@ yum install bind
 
 
 Редактируем файл vim /etc/named.conf
-```yaml
+```code
 #Слушаем на всех интрфейсач listen-on port 53 { any; };
 #Отвечаем на запросы любым клиентам allow-query     { any; };
 #Сервер уловной пресылки DNS forwarders { 10.10.10.10; };
