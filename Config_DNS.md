@@ -4,7 +4,7 @@ yum install -y bind
 ```
 Редактируем файл vim /etc/named.conf.
 
-```yaml
+```code
 options {
 	listen-on port 53 { any; }; #Слушаем на всех интерфейсах 
 	listen-on-v6 port 53 { ::1; };
