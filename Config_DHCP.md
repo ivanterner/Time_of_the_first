@@ -1,19 +1,20 @@
 ![Карта сети ](/dhcp.png)
 
-Установка dcp сервера.
-```console
+Установка dcph сервера.
+```bash
 yum install dhcp-server.x86_64
 ```
 
 Копирем конфиг.
-```console
+```bash
 cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf
 ```
 
 Настраиваем сервер.
 ```console
 vim dhcpd.conf
-
+```
+```yaml
 #Данными строчками задается доменное имя и DNS-сервер:
 option domain-name "skill39.wsr";
 option domain-name-servers 172.16.20.10;
@@ -53,24 +54,28 @@ host l-cli-b {
 ```
 
 Настраваем запуск на интефейсах. 
-```console
+```bash
 vim /etc/default/isc-dhcp-server
+```
+```yaml
 INTERFACESv4="enp1s0 enp7s0"
 ```
 
 Запускаем демон.
-```console
+```bash
 systemctl start dhcpd.service
 systemctl enable dhcpd.service 
 ```
 
 Установка сервера пересылки.
-```console
-yum install dhcp-relay.x86_64
+```bash
+yum install -y dhcp-relay.x86_64
 ```
 Настраивается через systemd.
-```console
+```bash
 vim /etc/systemd/system/multi-user.target.wants/dhcrelay.service
+```
+```yaml
 [Unit]
 Description=DHCP Relay Agent Daemon
 Documentation=man:dhcrelay(8)
@@ -86,7 +91,7 @@ StandardError=null
 WantedBy=multi-user.target
 ```
 Запускаем демон.
-```console
+```bash
 systemctl enable dhcrelay.service 
 systemctl start dhcrelay.service 
 systemctl status dhcrelay.service 
