@@ -15,8 +15,8 @@ DHCP:
 Шаг 2: Настройка конфигурационных файлов
 Конфигурация на dhcp-01
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:
-#sudo nano /etc/dhcp/dhcpd.conf
 Добавьте или измените следующие строки:
+
 ```console
 failover peer "failover-dhcp" {
   primary; # Определяет главный сервер 
@@ -58,11 +58,8 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 ```
 Конфигурация на dhcp-02
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:
-
-#sudo nano /etc/dhcp/dhcpd.conf
 Добавьте или измените следующие строки:
-dhcpd.conf
-
+```console
 failover peer "failover-dhcp" {
   secondary; # определитель вторичного сервера
   address 192.168.100.32; # адрес первичного сервера
@@ -98,7 +95,7 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
     range 192.168.100.33 192.168.100.34;
   }
 }
-
+```
 Шаг 3: Настройка службы DHCP
 Настройте, чтобы служба DHCP использовала правильный интерфейс. Откройте файл /etc/default/isc-dhcp-server и укажите нужный интерфейс:
 #sudo nano /etc/default/isc-dhcp-server
