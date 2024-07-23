@@ -1,6 +1,6 @@
 ![Карта сети ](/dhcp.png)
 
-Установка dcph сервера.
+Установка dhcp сервера.
 ```bash
 yum install dhcp-server.x86_64
 ```
