@@ -1,10 +1,10 @@
 Установить mamonsu.
-```console
-sudo yum install mamonsu-3.5.5-1.el7.noarch
+```bash
+sudo yum install -y mamonsu
 ```
 
 Создать БД для мониторинга.
-```console
+```sql
 CREATE USER mamonsu WITH PASSWORD 'yourpassword';
 GRANT pg_monitor TO mamonsu;
 CREATE DATABASE mamonsu OWNER mamonsu;
