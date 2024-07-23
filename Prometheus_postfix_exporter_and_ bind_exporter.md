@@ -1,8 +1,8 @@
-Компилируем и копируем на хост:
+Компилируем и копируем на хост бинарники в /usr/local/bin/:
 postfix_exporter
 prometheus
 promtool
-копируем бинарники в /usr/local/bin/
+
 
 Создаем сервис для Прометея.
 ```console
