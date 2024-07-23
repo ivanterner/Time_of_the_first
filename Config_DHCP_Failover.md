@@ -18,7 +18,7 @@ sudo yum install -y dhcp
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:\
 Добавьте или измените следующие строки:
 
-```code
+```yaml
 failover peer "failover-dhcp" {
   primary; # Определяет главный сервер 
   address 192.168.100.31; # адрес первичного сервера
