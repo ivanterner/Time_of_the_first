@@ -192,20 +192,23 @@ key omapi_key {
 omapi-port 7911;
 ```
 
-6. Резервное копирование
+[Backup]
 Настройте регулярное резервное копирование конфигурационных файлов и баз данных аренды IP-адресов.
-
 Пример резервного копирования с использованием cron и tar:
 
 Создайте скрипт резервного копирования:
+```console
 #!/bin/bash
 tar -czf /backup/dhcpd-backup-$(date +\%F).tar.gz /etc/dhcp /var/lib/dhcp
-
+```
 Сделайте его исполняемым:
+```console
 #chmod +x /path/to/backup-script.sh
+```
 Настройте задание cron для ежедневного выполнения:
+```console
 sudo crontab -e
-
+```
 Добавьте строку:
 0 2 * * * /path/to/backup-script.sh
 
