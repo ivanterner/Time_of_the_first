@@ -216,3 +216,19 @@ sudo crontab -e
 ```yaml
 0 2 * * * /path/to/backup-script.sh
 ```
+Если хотим исключить подсети просто определяем сеть без параметров.
+yaml```
+subnet 192.168.100.0 netmask 255.255.255.0 {
+}
+subnet 192.168.101.0 netmask 255.255.255.0 {
+  option subnet-mask 255.255.255.0;
+  option broadcast-address 192.168.101.255;
+  option routers 192.168.101.1;
+  option domain-name-servers redos.test;
+  option domain-search "redos.test";
+  pool {
+    failover peer "failover-dhcp";
+    range 192.168.101.33 192.168.101.34;
+  }
+}
+```
