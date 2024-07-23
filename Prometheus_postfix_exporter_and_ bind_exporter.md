@@ -5,7 +5,7 @@ promtool
 
 
 Создаем сервис для Прометея.
-```console
+```yaml
 cat /etc/systemd/system/prometheus.service
 
 [Unit]
@@ -36,7 +36,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 Создаем сервис для Postfix_eprorter.
-```console
+```yaml
 cat /etc/systemd/system/postfix_exporter.service
 [Unit]
 Description=Prometheus
@@ -59,6 +59,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+```
 Перечитываем systemd
 systemctl daemon-reload
 
