@@ -1,10 +1,10 @@
 Устанавливаем bind.
-```console
-yum install bind
+```bash
+yum install -y bind
 ```
 Редактируем файл vim /etc/named.conf.
 
-```console
+```yaml
 options {
 	listen-on port 53 { any; }; #Слушаем на всех интерфейсах 
 	listen-on-v6 port 53 { ::1; };
@@ -55,7 +55,7 @@ include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
 Создаем файл зоны redos.lab.
-```console
+```yaml
 $TTL 1D
 @		IN SOA	redos.lab. redos-01 (
 					101	; serial
@@ -72,7 +72,7 @@ www		IN	A	192.168.100.6
 mail          	IN      A      192.168.100.6
 ```
 Создаем файл зоны 100.168.192.in-addr.arpa.
-```console
+```yaml
 $TTL 1D
 @		IN SOA	redos.lab. redos-01.redos.lab. (
 					102	; serial
@@ -85,16 +85,16 @@ $TTL 1D
 7		IN	PTR	redos-02.redos.lab.
 ```
 Проверям конфиг.
-```console
+```bash
 named-checkconf /etc/named.conf 
 ```
 Проверяем файлы зон.
-```console
+```bash
 named-checkzone 100.168.192.in-addr.arpa 100.168.192.in-addr.arpa
 named-checkzone redos.lab. redos.lab
 ``` 
 Стратуем службу.
-```console
+```bash
 systemctl start named
 systemctl enable named
 ```
