@@ -8,8 +8,8 @@
 Шаг 1: Установка ISC DHCP сервера
 На обоих серверах установите пакет ISC DHCP:
 ```console
-#sudo yum update
-#sudo yum install dhcp
+sudo yum update -y
+sudo yum install -y dhcp
 ```
 
 Шаг 2: Настройка конфигурационных файлов
@@ -109,12 +109,12 @@ INTERFACESv4="enp0s3"
 Шаг 4: запуск службы DHCP
 После настройки конфигурационных файлов перезапустите службы DHCP на обоих серверах:
 ```console
-#sudo  systemctl start dhcpd
+sudo  systemctl start dhcpd
 ```
 Шаг 5: Проверка статуса службы
 Убедитесь, что службы DHCP работают корректно на обоих серверах:
 ```console
-#sudo systemctl status dhcpd
+sudo systemctl status dhcpd
 ```
 
 [Troubleshooting]
@@ -124,14 +124,14 @@ INTERFACESv4="enp0s3"
 Откройте omshell:
 Подключитесь к DHCP серверу (замените localhost на IP-адрес вашего сервера, если необходимо):
 ```console
-#omshell
+omshell
 > server localhost
 > port 7911
 Установите ключ для аутентификации (если используется):
-#omshell
+omshell
 > key omapi_key your_key_here
 Запросите объект failover:
-#omshell
+omshell
 > new failover-state
 > set name = "dhcp-failover"
 > open
@@ -142,18 +142,18 @@ INTERFACESv4="enp0s3"
 3. Использование команды dhcpd-pools
 Команда dhcpd-pools позволяет просмотреть распределение адресов и статус failover в удобочитаемом виде. Для установки dhcpd-pools на Ubuntu:
 ```console
-#sudo yum install dhcpd-pools
+sudo yum install -y dhcpd-pools
 ```
 После установки запустите команду для анализа конфигурации DHCP:
 ```console
-#dhcpd-pools -c /etc/dhcp/dhcpd.conf -l /var/lib/dhcp/dhcpd.leases
+dhcpd-pools -c /etc/dhcp/dhcpd.conf -l /var/lib/dhcp/dhcpd.leases
 ```
 Эта команда покажет информацию о состоянии пулов адресов и статус failover.
 
 4. Проверка состояния через netstat
 Вы можете использовать netstat для проверки, слушает ли сервер на порту failover (обычно 647):
 ```console
-#sudo netstat -tulnp | grep dhcpd
+sudo netstat -tulnp | grep dhcpd
 ```
 Вы должны увидеть строку, указывающую на то, что dhcpd слушает на порту 647, что подтверждает активное состояние failover.
 
@@ -162,25 +162,23 @@ INTERFACESv4="enp0s3"
 
 Отключите isc-dhcp-server на одном из серверов:
 ```console
-#sudo systemctl stop dhcpd
+sudo systemctl stop dhcpd
 ```
 
 Запросите новый IP-адрес на клиенте (например, перезагрузите сетевой интерфейс):
 ```console
-#sudo dhclient -v
+sudo dhclient -v
 ```
 Проверьте логи на работающем сервере, чтобы убедиться, что он обслуживает запросы клиентов.
 Повторите процесс, отключив другой сервер, чтобы убедиться, что оба сервера могут корректно заменять друг друга.
 Эти шаги помогут вам убедиться, что ваши DHCP серверы корректно взаимодействуют в режиме отказоустойчивости и могут обслуживать клиентов без прерывания даже при выходе из строя одного из серверов.
-
-
 
 [Security]
 OMAPI (Object Management API)
 Используйте OMAPI для безопасного управления сервером DHCP. Создайте ключ для OMAPI и добавьте его в конфигурацию.
 Создание ключа OMAPI:
 ```console
-#sudo omapi-keygen
+sudo omapi-keygen
 ```
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
 ```console
@@ -203,7 +201,7 @@ tar -czf /backup/dhcpd-backup-$(date +\%F).tar.gz /etc/dhcp /var/lib/dhcp
 ```
 Сделайте его исполняемым:
 ```console
-#chmod +x /path/to/backup-script.sh
+chmod +x /path/to/backup-script.sh
 ```
 Настройте задание cron для ежедневного выполнения:
 ```console
