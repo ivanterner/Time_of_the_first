@@ -99,7 +99,9 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 Шаг 3: Настройка службы DHCP
 Настройте, чтобы служба DHCP использовала правильный интерфейс. Откройте файл /etc/default/isc-dhcp-server и укажите нужный интерфейс:
 Измените строку:
+```console
 INTERFACESv4="enp0s3"
+```
 Замените eth0 на имя сетевого интерфейса, который вы используете.
 
 Шаг 4: запуск службы DHCP
@@ -109,16 +111,17 @@ INTERFACESv4="enp0s3"
 ```
 Шаг 5: Проверка статуса службы
 Убедитесь, что службы DHCP работают корректно на обоих серверах:
+```console
 #sudo systemctl status dhcpd
+```
 
 [Troubleshooting]
 
 Использование команды omshell
 Команда omshell (OMAPI shell) позволяет взаимодействовать с сервером DHCP и запрашивать состояние failover. Вот пример использования omshell для проверки состояния failover:
-
 Откройте omshell:
-#omshell
 Подключитесь к DHCP серверу (замените localhost на IP-адрес вашего сервера, если необходимо):
+```console
 #omshell
 > server localhost
 > port 7911
@@ -131,11 +134,14 @@ INTERFACESv4="enp0s3"
 > set name = "dhcp-failover"
 > open
 > show
+```
 Эта команда покажет текущее состояние failover на сервере. Повторите процесс на обоих серверах, чтобы убедиться, что они оба взаимодействуют корректно.
 
 3. Использование команды dhcpd-pools
 Команда dhcpd-pools позволяет просмотреть распределение адресов и статус failover в удобочитаемом виде. Для установки dhcpd-pools на Ubuntu:
-#sudo apt-get install dhcpd-pools
+```console
+#sudo yum install dhcpd-pools
+```
 После установки запустите команду для анализа конфигурации DHCP:
 #dhcpd-pools -c /etc/dhcp/dhcpd.conf -l /var/lib/dhcp/dhcpd.leases
 Эта команда покажет информацию о состоянии пулов адресов и статус failover.
