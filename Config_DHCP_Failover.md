@@ -121,9 +121,9 @@ sudo systemctl status dhcpd
 
 [Troubleshooting]
 
-Использование команды omshell
-Команда omshell (OMAPI shell) позволяет взаимодействовать с сервером DHCP и запрашивать состояние failover. Вот пример использования omshell для проверки состояния failover:
-Откройте omshell:
+Использование команды omshell\
+Команда omshell (OMAPI shell) позволяет взаимодействовать с сервером DHCP и запрашивать состояние failover. Вот пример использования omshell для проверки состояния failover:\
+Откройте omshell:\
 Подключитесь к DHCP серверу (замените localhost на IP-адрес вашего сервера, если необходимо):
 ```console
 omshell
