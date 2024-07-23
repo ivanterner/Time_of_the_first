@@ -1,4 +1,3 @@
-DHCP: 
 [Manual] 
 ["https://redos.red-soft.ru/base/server-configuring/dhcp/failover-dhcp/" , "https://infra.gnulinux.pro/ru/latest/infra/11/11._DHCP_сервер_ч.2.html#id1"]
 	
@@ -98,16 +97,15 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 ```
 Шаг 3: Настройка службы DHCP
 Настройте, чтобы служба DHCP использовала правильный интерфейс. Откройте файл /etc/default/isc-dhcp-server и укажите нужный интерфейс:
-#sudo nano /etc/default/isc-dhcp-server
 Измените строку:
-
 INTERFACESv4="enp0s3"
 Замените eth0 на имя сетевого интерфейса, который вы используете.
 
 Шаг 4: запуск службы DHCP
 После настройки конфигурационных файлов перезапустите службы DHCP на обоих серверах:
-#sudo  systemctl start dhcpd --now
-
+```console
+#sudo  systemctl start dhcpd
+```
 Шаг 5: Проверка статуса службы
 Убедитесь, что службы DHCP работают корректно на обоих серверах:
 #sudo systemctl status dhcpd
