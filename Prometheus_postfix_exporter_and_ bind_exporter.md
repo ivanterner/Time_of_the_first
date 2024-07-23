@@ -4,10 +4,9 @@ prometheus
 promtool
 
 
-Создаем сервис для Прометея.
-```yaml
-cat /etc/systemd/system/prometheus.service
+Создаем сервис для Прометея /etc/systemd/system/prometheus.service.
 
+```yaml
 [Unit]
 Description=Prometheus
 Documentation=https://prometheus.io/docs/introduction/overview/
@@ -61,7 +60,9 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
 Перечитываем systemd
+
 ```bash
 systemctl daemon-reload
 ```
@@ -102,11 +103,13 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9154']
 ```
+
 Создаем конфиг файл авторизации /etc/prometheus/web.yml
 ```yaml
 basic_auth_users:
        admin: 'Твой пароль зашифрованый библиотекой bcrypt'
 ```
+
 Стартуем сервисы.
 ```bash
 systemctl start prometheus
