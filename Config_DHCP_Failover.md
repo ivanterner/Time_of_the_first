@@ -209,5 +209,6 @@ chmod +x /path/to/backup-script.sh
 sudo crontab -e
 ```
 Добавьте строку:
+```code
 0 2 * * * /path/to/backup-script.sh
-
+```
