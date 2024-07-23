@@ -1,7 +1,7 @@
 
 Настройка iptables
 ```bash
-yum install -u iptables-services.noarch
+yum install -y iptables-services.noarch
 ```
 ```bash
 iptables -t nat -A POSTROUTING -o enp1s0 -j MASQUERADE
