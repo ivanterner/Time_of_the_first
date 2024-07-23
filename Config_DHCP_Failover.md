@@ -1,4 +1,4 @@
-[Manual] 
+[Manual]\
 ["https://redos.red-soft.ru/base/server-configuring/dhcp/failover-dhcp/" , "https://infra.gnulinux.pro/ru/latest/infra/11/11._DHCP_сервер_ч.2.html#id1"]
 	
 [Install]\
