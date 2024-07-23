@@ -20,7 +20,7 @@ ip link set tun1 up
 ip route add 172.16.0.0/16 via 10.5.5.1
 ```
 
-Добавитьт в автозагрузку /etc/crontab
+Добавить в автозагрузку /etc/crontab
 ```yaml
 @reboot  root  /etc/gre.up
 ```
