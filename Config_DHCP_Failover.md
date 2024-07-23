@@ -17,7 +17,7 @@ DHCP:
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:
 #sudo nano /etc/dhcp/dhcpd.conf
 Добавьте или измените следующие строки:
-dhcpd.conf
+```console
 failover peer "failover-dhcp" {
   primary; # Определяет главный сервер 
   address 192.168.100.31; # адрес первичного сервера
@@ -55,6 +55,7 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
     range 192.168.100.33 192.168.100.34;
   }
 }
+```
 Конфигурация на dhcp-02
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:
 
