@@ -55,7 +55,7 @@ include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
 Создаем файл зоны redos.lab.
-```yaml
+```code
 $TTL 1D
 @		IN SOA	redos.lab. redos-01 (
 					101	; serial
@@ -72,7 +72,7 @@ www		IN	A	192.168.100.6
 mail          	IN      A      192.168.100.6
 ```
 Создаем файл зоны 100.168.192.in-addr.arpa.
-```yaml
+```code
 $TTL 1D
 @		IN SOA	redos.lab. redos-01.redos.lab. (
 					102	; serial
