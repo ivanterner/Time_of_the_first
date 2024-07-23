@@ -8,7 +8,7 @@
 
 Шаг 1: Установка ISC DHCP сервера\
 На обоих серверах установите пакет ISC DHCP:
-```console
+```bash
 sudo yum update -y
 sudo yum install -y dhcp
 ```
