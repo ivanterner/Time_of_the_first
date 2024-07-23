@@ -61,7 +61,7 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 Конфигурация на dhcp-02\
 Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:\
 Добавьте или измените следующие строки:
-```code
+```yaml
 failover peer "failover-dhcp" {
   secondary; # определитель вторичного сервера
   address 192.168.100.32; # адрес первичного сервера
@@ -103,19 +103,19 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 Настройте, чтобы служба DHCP использовала правильный интерфейс.\
 Откройте файл /etc/default/isc-dhcp-server и укажите нужный интерфейс:\
 Измените строку:
-```code
+```yaml
 INTERFACESv4="enp0s3"
 ```
 Замените eth0 на имя сетевого интерфейса, который вы используете.
 
 Шаг 4: запуск службы DHCP\
 После настройки конфигурационных файлов запустите службы DHCP на обоих серверах:
-```console
+```bash
 sudo  systemctl start dhcpd
 ```
 Шаг 5: Проверка статуса службы
 Убедитесь, что службы DHCP работают корректно на обоих серверах:
-```console
+```bash
 sudo systemctl status dhcpd
 ```
 
@@ -146,18 +146,18 @@ omshell
 2. Использование команды dhcpd-pools\
 Команда dhcpd-pools позволяет просмотреть распределение адресов и статус failover в удобочитаемом виде.\
 Для установки dhcpd-pools на Redos:
-```console
+```bash
 sudo yum install -y dhcpd-pools
 ```
 После установки запустите команду для анализа конфигурации DHCP:
-```console
+```bash
 dhcpd-pools -c /etc/dhcp/dhcpd.conf -l /var/lib/dhcp/dhcpd.leases
 ```
 Эта команда покажет информацию о состоянии пулов адресов и статус failover.
 
 3. Проверка состояния через netstat\
 Вы можете использовать netstat для проверки, слушает ли сервер на порту failover (обычно 647):
-```console
+```bash
 sudo netstat -tulnp | grep dhcpd
 ```
 Вы должны увидеть строку, указывающую на то, что dhcpd слушает на порту 647, что подтверждает активное состояние failover.
@@ -166,12 +166,12 @@ sudo netstat -tulnp | grep dhcpd
 Окончательная проверка включает в себя отключение одного из серверов и проверку, что второй сервер берет на себя обслуживание клиентов.
 
 Отключите isc-dhcp-server на одном из серверов:
-```console
+```bash
 sudo systemctl stop dhcpd
 ```
 
 Запросите новый IP-адрес на клиенте (например, перезагрузите сетевой интерфейс):
-```console
+```bash
 sudo dhclient -v
 ```
 Проверьте логи на работающем сервере, чтобы убедиться, что он обслуживает запросы клиентов.
@@ -182,11 +182,11 @@ sudo dhclient -v
 OMAPI (Object Management API)\
 Используйте OMAPI для безопасного управления сервером DHCP. Создайте ключ для OMAPI и добавьте его в конфигурацию.\
 Создание ключа OMAPI:
-```console
+```bash
 sudo omapi-keygen
 ```
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
-```code
+```yaml
 key omapi_key {
     algorithm hmac-md5;
     secret "your_generated_key";
@@ -200,19 +200,19 @@ omapi-port 7911;
 Пример резервного копирования с использованием cron и tar:
 
 Создайте скрипт резервного копирования:
-```code
+```yaml
 #!/bin/bash
 tar -czf /backup/dhcpd-backup-$(date +\%F).tar.gz /etc/dhcp /var/lib/dhcp
 ```
 Сделайте его исполняемым:
-```console
+```bash
 chmod +x /path/to/backup-script.sh
 ```
 Настройте задание cron для ежедневного выполнения:
-```console
+```bash
 sudo crontab -e
 ```
 Добавьте строку:
-```code
+```yaml
 0 2 * * * /path/to/backup-script.sh
 ```
