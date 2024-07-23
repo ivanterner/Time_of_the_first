@@ -217,7 +217,7 @@ sudo crontab -e
 0 2 * * * /path/to/backup-script.sh
 ```
 Если хотим исключить подсети просто определяем сеть без параметров.
-yaml```
+```yaml
 subnet 192.168.100.0 netmask 255.255.255.0 {
 }
 subnet 192.168.101.0 netmask 255.255.255.0 {
