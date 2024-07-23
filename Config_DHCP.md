@@ -67,7 +67,7 @@ systemctl start dhcpd.service
 systemctl enable dhcpd.service 
 ```
 
-Установка сервера пересылки.
+Установка сервера пересылки запросов.
 ```bash
 yum install -y dhcp-relay.x86_64
 ```
