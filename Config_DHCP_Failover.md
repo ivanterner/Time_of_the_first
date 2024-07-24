@@ -1,5 +1,5 @@
 [Manual]\
-["https://redos.red-soft.ru/base/server-configuring/dhcp/failover-dhcp/", "https://infra.gnulinux.pro/ru/latest/infra/11/11._DHCP_сервер_ч.2.html#id1", "https://wikival.bmstu.ru/doku.php?id=сервис_dhcp&s[]=dhcp"]
+["https://redos.red-soft.ru/base/server-configuring/dhcp/failover-dhcp/", "https://infra.gnulinux.pro/ru/latest/infra/11/11._DHCP_сервер_ч.2.html#id1", "https://wikival.bmstu.ru/doku.php?id=сервис_dhcp&s[]=dhcp", "https://interface31.ru/tech_it/2022/07/nastraivaem-otkazoustoychivyy-dhcp-server-na-baze-isc-dhcp.html"]
 	
 [Install]\
 Установка отказоустойчивого DHCP сервера на Linux может быть достигнута с использованием пакета Internet Systems Consortium DHCP в сочетании с DHCP Failover механизмом.\
