@@ -229,7 +229,7 @@ sudo crontab -e
 Если хотим исключить подсети просто определяем сеть без параметров.
 ```yaml
 subnet 192.168.100.0 netmask 255.255.255.0 {
-not authoritative;;
+not authoritative;
 }
 subnet 192.168.101.0 netmask 255.255.255.0 {
   option subnet-mask 255.255.255.0;
