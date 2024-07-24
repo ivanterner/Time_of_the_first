@@ -2,7 +2,7 @@
 
 Установка dhcp сервера.
 ```bash
-yum install dhcp-server.x86_64
+yum install -y dhcp-server.x86_64
 ```
 
 Копирем конфиг.
@@ -16,7 +16,7 @@ vim dhcpd.conf
 ```
 ```yaml
 #Данными строчками задается доменное имя и DNS-сервер:
-option domain-name "skill39.wsr";
+option domain-name "test.loc";
 option domain-name-servers 172.16.20.10;
 
 #Данные строки настраивают время аренды IP-адреса:
