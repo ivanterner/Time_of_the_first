@@ -190,6 +190,11 @@ OMAPI (Object Management API)\
 ```bash
 sudo omapi-keygen
 ```
+или
+
+```bash
+dnssec-keygen -r /dev/urandom -a HMAC-MD5 -b 512 -n HOST omapi_key
+```
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
 ```yaml
 key omapi_key {
