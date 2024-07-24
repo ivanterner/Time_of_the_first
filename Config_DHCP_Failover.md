@@ -193,7 +193,7 @@ sudo omapi-keygen
 или
 
 ```bash
-dnssec-keygen -r /dev/urandom -a HMAC-MD5 -b 512 -n HOST omapi_key
+tsig-keygen DHCP.OMAPI > /root/dhсp_omapi.key
 ```
 Добавьте ключ в /etc/dhcp/dhcpd.conf:
 ```yaml
