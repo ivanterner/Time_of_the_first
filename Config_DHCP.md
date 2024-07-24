@@ -55,7 +55,7 @@ host l-cli-b {
 
 Настраваем запуск на интефейсах. 
 ```bash
-vim /etc/default/isc-dhcp-server
+vim /etc/sysconfig/dhcpd 
 ```
 ```yaml
 INTERFACESv4="enp1s0 enp7s0"
