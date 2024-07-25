@@ -59,9 +59,10 @@ INTERFACESv4="eth0"
 После настройки конфигурационных файлов запустите службы DHCP на сервере:
 ```bash
 sudo  systemctl start dhcpd
+sudo  systemctl enable dhcpd
 ```
 Шаг 5: Проверка статуса службы\
-Убедитесь, что службы DHCP работают корректно на обоих серверах:
+Убедитесь, что службы DHCP работают корректно:
 ```bash
 sudo systemctl status dhcpd
 ```
