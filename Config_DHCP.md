@@ -1,7 +1,7 @@
 ![Карта сети ](/dhcp.png)
 
-Шаг 1: Установка ISC DHCP сервера
-Установка dhcp сервера.
+Шаг 1: Установка ISC DHCP сервера\
+На сервере установите пакет ISC DHCP:
 ```bash
 yum install -y dhcp-server.x86_64
 ```
