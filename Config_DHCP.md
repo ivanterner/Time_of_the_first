@@ -48,13 +48,12 @@ host l-cli-b {
   fixed-address 172.16.200.61;
 }
 ```
-
-Настраваем запуск на интефейсах. 
-```bash
-vim /etc/sysconfig/dhcpd 
-```
+Шаг 3: Настройка службы DHCP
+Настройте, чтобы служба DHCP использовала правильный интерфейс.
+Откройте файл vi /etc/sysconfig/dhcpd и укажите нужный интерфейс:
+Измените строку:
 ```yaml
-INTERFACESv4="enp1s0 enp7s0"
+INTERFACESv4="enp1s0"
 ```
 
 Запускаем демон.
