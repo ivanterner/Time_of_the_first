@@ -6,15 +6,11 @@
 yum install -y dhcp-server.x86_64
 ```
 
-Копирем конфиг.
-```bash
-cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf
-```
 
-Настраиваем сервер.
-```console
-vim dhcpd.conf
-```
+Шаг 2: Настройка конфигурационных файлов\
+Конфигурация на dhcp-01\
+Откройте файл конфигурации /etc/dhcp/dhcpd.conf для редактирования:\
+Добавьте или измените следующие строки:
 ```yaml
 #Данными строчками задается доменное имя и DNS-сервер:
 option domain-name "test.loc";
