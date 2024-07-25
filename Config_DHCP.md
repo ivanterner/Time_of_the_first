@@ -55,12 +55,15 @@ host l-cli-b {
 ```yaml
 INTERFACESv4="eth0"
 ```
-Замените eth0 на имя сетевого интерфейса, который вы используете.
-
-Запускаем демон.
+Шаг 4: запуск службы DHCP\
+После настройки конфигурационных файлов запустите службы DHCP на сервере:
 ```bash
-systemctl start dhcpd.service
-systemctl enable dhcpd.service 
+sudo  systemctl start dhcpd
+```
+Шаг 5: Проверка статуса службы
+Убедитесь, что службы DHCP работают корректно на обоих серверах:
+```bash
+sudo systemctl status dhcpd
 ```
 
 Установка сервера пересылки запросов.
