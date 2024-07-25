@@ -67,7 +67,8 @@ sudo  systemctl enable dhcpd
 sudo systemctl status dhcpd
 ```
 
-Установка сервера пересылки запросов.
+
+Шаг 6: Установка сервера пересылки запросов.
 ```bash
 yum install -y dhcp-relay.x86_64
 ```
