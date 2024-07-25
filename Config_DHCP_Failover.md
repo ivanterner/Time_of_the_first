@@ -133,6 +133,7 @@ omshell
 Установите ключ для аутентификации (если используется):
 omshell
 > key omapi_key your_key_here
+> connect
 Запросите объект failover:
 omshell
 > new failover-state
