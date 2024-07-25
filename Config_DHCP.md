@@ -60,7 +60,7 @@ INTERFACESv4="eth0"
 ```bash
 sudo  systemctl start dhcpd
 ```
-Шаг 5: Проверка статуса службы
+Шаг 5: Проверка статуса службы\
 Убедитесь, что службы DHCP работают корректно на обоих серверах:
 ```bash
 sudo systemctl status dhcpd
