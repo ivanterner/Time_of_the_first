@@ -245,3 +245,25 @@ subnet 192.168.101.0 netmask 255.255.255.0 {
   }
 }
 ```
+Настройка обновления зон.
+```yaml
+ddns-update-style interim;
+ddns-ttl 60;
+...
+subnet 192.168.X.0 netmask 255.255.255.0 {
+
+### ubuntu
+#include "/etc/dhcp/rndc.key";
+
+### freebsd
+#include "/usr/local/etc/rndc.key";
+
+  zone corpX.un. {
+    primary 192.168.X.10;
+    key rndc-key;
+  }
+  zone X.168.192.in-addr.arpa. {
+    primary 192.168.X.10;
+    key rndc-key;
+  }
+```
