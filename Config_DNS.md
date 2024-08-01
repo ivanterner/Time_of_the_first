@@ -2,7 +2,7 @@
 ```bash
 yum install -y bind
 ```
-Редактируем файл vim /etc/named.conf.
+Редактируем файл /etc/named.conf.
 
 ```code
 options {
