@@ -249,6 +249,9 @@ subnet 192.168.101.0 netmask 255.255.255.0 {
 ```yaml
 ddns-update-style interim;
 ddns-ttl 60;
+ddns-updates on;
+ignore client-updates;
+update-static-leases on;
 ...
 subnet 192.168.X.0 netmask 255.255.255.0 {
 
