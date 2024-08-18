@@ -31,7 +31,7 @@ query_timeout = 10
 [zabbix]
 enabled = True
 client = FQDN
-address = 192.168.100.199 #Адресс сервера zabbix
+address = 192.168.100.199 #Адрес сервера zabbix
 port = 10051
 re_send = False
 ```
