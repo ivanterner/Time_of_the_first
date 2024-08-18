@@ -4,8 +4,9 @@
 graph TD;
     failover-dhcp<-->dhcp-01-192.168.100.31;
     failover-dhcp<-->dhcp-02-192.168.100.32;
-    dhcp-01-192.168.100.31<-->LAN-192.168.100.0/24;
-    dhcp-02-192.168.100.32<-->LAN-192.168.100.0/24;
+    dhcp-01-192.168.100.31<-->lan-192.168.100.0/24;
+    dhcp-02-192.168.100.32<-->lan-192.168.100.0/24;
+style failover-dhcp  fill:#d6d,stroke:#333,stroke-width:4:px
 ```
 
 [Manual]\
