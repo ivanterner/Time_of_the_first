@@ -1,11 +1,11 @@
-[Network plan]\
+[Network plan]
 
 ```mermaid
 graph TD;
-    HA-->dhcp-01;
-    HA-->dhcp-02;
-    dhcp-01-->LAN;
-    dhcp-02-->LAN;
+    HA<-->dhcp-01-192.168.100.31;
+    HA<-->dhcp-02-192.168.100.32;
+    dhcp-01-192.168.100.31<-->LAN-192.168.100.0/24;
+    dhcp-02-192.168.100.32<-->LAN-192.168.100.0/24;
 ```
 
 [Manual]\
