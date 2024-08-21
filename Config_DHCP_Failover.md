@@ -258,11 +258,17 @@ subnet 192.168.101.0 netmask 255.255.255.0 {
 ```
 Настройка обновления зон.
 ```yaml
+
 ddns-update-style interim;
 ddns-ttl 60;
 ddns-updates on;
-ignore client-updates;
+dyndns_update_ptr = true;
+dyndns_refresh_interval = 60;
 update-static-leases on;
+ddns-domainname "redos.test";
+ddns-rev-domainname "in-addr.arpa.";
+allow client-updates;
+
 ...
 subnet 192.168.X.0 netmask 255.255.255.0 {
 
@@ -272,7 +278,7 @@ subnet 192.168.X.0 netmask 255.255.255.0 {
 ### freebsd
 #include "/usr/local/etc/rndc.key";
 
-  zone corpX.un. {
+  zone redos.test. {
     primary 192.168.X.10;
     key rndc-key;
   }
