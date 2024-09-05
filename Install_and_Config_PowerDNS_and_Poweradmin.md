@@ -211,3 +211,6 @@ security-poll-suffix=
 setgid=pdns
 setuid=pdns
 ```
+Стратуем службу pdns.
+systemctl start pdns
+systemctl enable pdns
