@@ -190,3 +190,7 @@ CREATE TABLE domains (
 ```sql
 quit;
 ```
+Устанавливаем PoweDNS.
+```bash
+yum -y install pdns pdns-backend-mysql bind-utils
+```
