@@ -235,3 +235,8 @@ php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mhash gettext
 ```bash
 php-pear-MDB2.noarch
 ```
+Стратуем службу httpd.
+```bash
+systemctl start httpd
+systemctl enable httpd
+```
