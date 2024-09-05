@@ -194,3 +194,8 @@ quit;
 ```bash
 yum -y install pdns pdns-backend-mysql bind-utils
 ```
+Создаем резервную копию кофига.
+```bash
+cd /etc/pdns/
+cp pdns.conf pdns.conf.back
+```
