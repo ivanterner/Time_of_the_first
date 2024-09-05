@@ -268,3 +268,21 @@ IDENTIFIED BY 'твой пароль';
 ```
 На этом шаге нас просят создать файл /inc/config.inc.php и наполнить его.
 ![PDNS](/pdns5.png)
+
+
+<?php
+
+$db_host = 'localhost';
+$db_user = 'pdns';
+$db_pass = 'твой пароль';
+$db_name = 'powerdns';
+$db_type = 'mysql';
+$db_layer = 'PDO';
+
+$session_key = 'твой ключ';
+
+$iface_lang = 'en_EN';
+
+$dns_hostmaster = 'pdns.redos.test';
+$dns_ns1 = 'pdns.redos.test';
+$dns_ns2 = '';
