@@ -226,3 +226,7 @@ udp   UNCONN 0      0           [::]:53           [::]:*    users:(("pdns_server
 tcp   LISTEN 0      128         0.0.0.0:53        0.0.0.0:*    users:(("pdns_server",pid=4124,fd=7))   
 tcp   LISTEN 0      128         [::]:53           [::]:*    users:(("pdns_server",pid=4124,fd=8)
 ```
+Устанавливаем Apache и PHP.
+```bash
+yum -y install httpd php php-devel php-gd php-imap php-ldap php-mysql php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mhash gettext
+```
