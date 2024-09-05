@@ -245,3 +245,8 @@ systemctl enable httpd
 cd /var/www/html/
 wget http://downloads.sourceforge.net/project/poweradmin/poweradmin-2.2.1.tar.gz
 ```
+Распакуем и переименуем.
+```bash
+tar -xzf poweradmin-2.2.1.tar.gz
+mv poweradmin-2.2.1 poweradmin
+```
