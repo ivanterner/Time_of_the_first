@@ -221,8 +221,8 @@ systemctl enable pdns
 ss -nlput | grep :53
 ```
 ```bash
-udp   UNCONN 0      0                                0.0.0.0:53        0.0.0.0:*    users:(("pdns_server",pid=4124,fd=5))   
-udp   UNCONN 0      0                                   [::]:53           [::]:*    users:(("pdns_server",pid=4124,fd=6))   
-tcp   LISTEN 0      128                              0.0.0.0:53        0.0.0.0:*    users:(("pdns_server",pid=4124,fd=7))   
-tcp   LISTEN 0      128                                 [::]:53           [::]:*    users:(("pdns_server",pid=4124,fd=8)
+udp   UNCONN 0      0           0.0.0.0:53        0.0.0.0:*    users:(("pdns_server",pid=4124,fd=5))   
+udp   UNCONN 0      0           [::]:53           [::]:*    users:(("pdns_server",pid=4124,fd=6))   
+tcp   LISTEN 0      128         0.0.0.0:53        0.0.0.0:*    users:(("pdns_server",pid=4124,fd=7))   
+tcp   LISTEN 0      128         [::]:53           [::]:*    users:(("pdns_server",pid=4124,fd=8)
 ```
