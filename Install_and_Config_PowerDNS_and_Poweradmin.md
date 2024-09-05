@@ -251,3 +251,4 @@ tar -xzf poweradmin-2.1.7.tgz
 poweradmin-2.1.7  poweradmin-2.1.7.tgz
 ```
 http://192.168.100.4//poweradmin/install/
+(/pdns1.png)
