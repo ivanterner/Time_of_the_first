@@ -287,3 +287,4 @@ $dns_hostmaster = 'pdns.redos.test';
 $dns_ns1 = 'pdns.redos.test';
 $dns_ns2 = '';
 ```
+![PDNS](/pdns5.png)
