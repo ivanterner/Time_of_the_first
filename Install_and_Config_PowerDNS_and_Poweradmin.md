@@ -293,3 +293,5 @@ cd /var/www/html/poweradmin/
 cp install/htaccess.dist .htaccess
 rm -rf install/
 ```
+Можно входить в систему.
+![PDNS](/pdns8.png)
