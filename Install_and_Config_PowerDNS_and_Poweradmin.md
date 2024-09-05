@@ -256,9 +256,10 @@ http://192.168.100.4//poweradmin/install/
 ![PDNS](/pdns2.png)
 ![PDNS](/pdns3.png)
 ![PDNS](/pdns4.png)
-
+На этом шаге нас просят вернутся в mysql и создать пользователя.
 ![PDNS](/pdns5.png)
 
+Идем в mysql и создаем пользователя.
 ```mysql
 В powerdns.*
 В 'pdns' @'localhost'
