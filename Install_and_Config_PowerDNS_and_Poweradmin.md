@@ -212,5 +212,7 @@ setgid=pdns
 setuid=pdns
 ```
 Стратуем службу pdns.
+```bash
 systemctl start pdns
 systemctl enable pdns
+```
