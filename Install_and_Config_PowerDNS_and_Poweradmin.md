@@ -269,7 +269,7 @@ IDENTIFIED BY 'твой пароль';
 На этом шаге нас просят создать файл /inc/config.inc.php и наполнить его.
 ![PDNS](/pdns5.png)
 
-
+```yaml
 <?php
 
 $db_host = 'localhost';
@@ -286,3 +286,4 @@ $iface_lang = 'en_EN';
 $dns_hostmaster = 'pdns.redos.test';
 $dns_ns1 = 'pdns.redos.test';
 $dns_ns2 = '';
+```
