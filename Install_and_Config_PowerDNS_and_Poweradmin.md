@@ -8,16 +8,12 @@ systemctl start mariadb
 systemctl enable mariadb
 ```
 
-
-
-
-
-
-
+Запускаем скрипт настройки mysql_secure.
+```bash
+mysql_secure_installation
+```
 
 ```yaml
-mysql_secure_installation
-
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
 
