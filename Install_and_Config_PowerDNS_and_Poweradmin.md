@@ -240,3 +240,8 @@ php-pear-MDB2.noarch
 systemctl start httpd
 systemctl enable httpd
 ```
+Переходи в директорию веб сервера и скачиваем исходник.
+```bash
+cd /var/www/html/
+wget http://downloads.sourceforge.net/project/poweradmin/poweradmin-2.2.1.tar.gz
+```
