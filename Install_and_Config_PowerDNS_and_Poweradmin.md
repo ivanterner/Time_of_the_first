@@ -199,3 +199,15 @@ yum -y install pdns pdns-backend-mysql bind-utils
 cd /etc/pdns/
 cp pdns.conf pdns.conf.back
 ```
+Правим конфиг.
+```yaml
+#launch=bind
+launch=gmysql
+gmysql-host=localhost
+gmysql-user=pdns
+gmysql-password=твой пароль
+gmysql-dbname=powerdns
+security-poll-suffix=
+setgid=pdns
+setuid=pdns
+```
