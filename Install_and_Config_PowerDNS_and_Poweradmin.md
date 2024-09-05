@@ -234,4 +234,4 @@ php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mhash gettext
 Устанавливаем PHP-pear.
 ```bash
 php-pear-MDB2.noarch
-```bash
+```
