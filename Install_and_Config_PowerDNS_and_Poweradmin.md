@@ -1,5 +1,6 @@
 
-https://www.howtoforge.com/how-to-install-powerdns-and-poweradmin-on-centos-7/?__cf_chl_tk=5JdDWkPy6sjQrWNFZ5aquCYsWCHIFaoMsPrQTj9L_oA-1725534826-0.0.1.1-5054
+[Manual]\
+["https://www.howtoforge.com/how-to-install-powerdns-and-poweradmin-on-centos-7/?__cf_chl_tk=5JdDWkPy6sjQrWNFZ5aquCYsWCHIFaoMsPrQTj9L_oA-1725534826-0.0.1.1-5054"]
 
 Устанавливаем MariaDB.
 ```bash
