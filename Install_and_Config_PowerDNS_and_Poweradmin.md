@@ -228,5 +228,10 @@ tcp   LISTEN 0      128         [::]:53           [::]:*    users:(("pdns_server
 ```
 Устанавливаем Apache и PHP.
 ```bash
-yum -y install httpd php php-devel php-gd php-imap php-ldap php-mysql php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mhash gettext
+yum -y install httpd php php-devel php-gd php-imap php-ldap php-mysql
+php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mhash gettext
 ```
+Устанавливаем PHP-pear.
+```bash
+php-pear-MDB2.noarch
+```bash
