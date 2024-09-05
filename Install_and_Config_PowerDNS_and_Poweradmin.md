@@ -1,4 +1,4 @@
-Установливаем MariaDB
+Устанавливаем MariaDB
 ```bash
 yum -y install mariadb mariadb-server
 ```
