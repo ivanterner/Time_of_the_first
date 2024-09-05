@@ -255,3 +255,11 @@ http://192.168.100.4//poweradmin/install/
 ![PDNS](/pdns1.png)
 ![PDNS](/pdns2.png)
 ![PDNS](/pdns3.png)
+![PDNS](/pdns3.png)
+
+
+```mysql
+В powerdns.*
+В 'pdns' @'localhost'
+IDENTIFIED BY 'твой пароль';
+```
