@@ -288,3 +288,8 @@ $dns_ns1 = 'pdns.redos.test';
 $dns_ns2 = '';
 ```
 ![PDNS](/pdns7.png)
+```bash
+cd /var/www/html/poweradmin/
+cp install/htaccess.dist .htaccess
+rm -rf install/
+```
