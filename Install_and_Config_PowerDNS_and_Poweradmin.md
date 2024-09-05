@@ -250,5 +250,8 @@ cd /var/www/html/
 tar -xzf poweradmin-2.1.7.tgz
 poweradmin-2.1.7  poweradmin-2.1.7.tgz
 ```
+Переходим в вебку и настраиваем.
 http://192.168.100.4//poweradmin/install/
-(/pdns1.png)
+![PDNS](/pdns1.png)
+![PDNS](/pdns2.png)
+![PDNS](/pdns3.png)
