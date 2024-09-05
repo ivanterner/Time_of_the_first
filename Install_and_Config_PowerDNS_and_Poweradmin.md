@@ -261,7 +261,8 @@ http://192.168.100.4//poweradmin/install/
 
 Идем в mysql и создаем пользователя.
 ```mysql
-В powerdns.*
-В 'pdns' @'localhost'
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON powerdns.*
+TO 'pdns'@'localhost'
 IDENTIFIED BY 'твой пароль';
 ```
