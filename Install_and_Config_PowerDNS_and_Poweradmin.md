@@ -243,10 +243,11 @@ systemctl enable httpd
 Переходи в директорию веб сервера и скачиваем исходник.
 ```bash
 cd /var/www/html/
-wget http://downloads.sourceforge.net/project/poweradmin/poweradmin-2.2.1.tar.gz
+ wget http://downloads.sourceforge.net/project/poweradmin/poweradmin-2.1.7.tgz
 ```
 Распакуем и переименуем.
 ```bash
-tar -xzf poweradmin-2.2.1.tar.gz
-mv poweradmin-2.2.1 poweradmin
+tar -xzf poweradmin-2.1.7.tgz
+poweradmin-2.1.7  poweradmin-2.1.7.tgz
 ```
+http://192.168.100.4//poweradmin/install/
