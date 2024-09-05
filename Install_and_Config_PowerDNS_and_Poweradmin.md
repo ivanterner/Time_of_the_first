@@ -266,3 +266,5 @@ ON powerdns.*
 TO 'pdns'@'localhost'
 IDENTIFIED BY 'твой пароль';
 ```
+На этом шаге нас просят создать файл /inc/config.inc.php и наполнить его.
+![PDNS](/pdns5.png)
