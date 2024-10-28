@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install "mamonsu" Last Version
+      when: ansible_os_family in ["RED"]
+      yum:
+        name: "mamonsu"
+        state: latest
+    - name: Make sure a service unit is running
+      systemd:
+        name: mamonsu
+        state: started
+        enabled: true
+        masked: false
+...
