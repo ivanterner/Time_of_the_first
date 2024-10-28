@@ -1,0 +1,14 @@
+---
+#Добавление временных меток к history
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Copy a new "/etc/profile.d/histtime.sh" file
+      copy:
+        src: /etc/ansible/config/profile/histtime.sh
+        dest: /etc/profile.d/histtime.sh
+        owner: root
+        group: root
+        mode: '0644' 
+...
