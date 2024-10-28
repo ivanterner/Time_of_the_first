@@ -199,12 +199,12 @@ poweradmin-2.1.7  poweradmin-2.1.7.tgz
 ```
 Переходим в вебку и настраиваем.
 http://192.168.100.4//poweradmin/install/
-![PDNS](/pdns1.png)
-![PDNS](/pdns2.png)
-![PDNS](/pdns3.png)
-![PDNS](/pdns4.png)
+![PDNS](/img/pdns1.png)
+![PDNS](/img/pdns2.png)
+![PDNS](/img/pdns3.png)
+![PDNS](/img/pdns4.png)
 На этом шаге нас просят вернутся в mysql и создать пользователя.
-![PDNS](/pdns5.png)
+![PDNS](/img/pdns5.png)
 
 Идем в mysql и создаем пользователя.
 ```mysql
@@ -214,7 +214,7 @@ TO 'pdns'@'localhost'
 IDENTIFIED BY 'твой пароль';
 ```
 На этом шаге нас просят создать файл /inc/config.inc.php и наполнить его.
-![PDNS](/pdns5.png)
+![PDNS](/img/pdns5.png)
 
 ```yaml
 <?php
@@ -234,11 +234,11 @@ $dns_hostmaster = 'pdns.redos.test';
 $dns_ns1 = 'pdns.redos.test';
 $dns_ns2 = '';
 ```
-![PDNS](/pdns7.png)
+![PDNS](/img/pdns7.png)
 ```bash
 cd /var/www/html/poweradmin/
 cp install/htaccess.dist .htaccess
 rm -rf install/
 ```
 Можно входить в систему.
-![PDNS](/pdns8.png)
+![PDNS](/img/pdns8.png)
