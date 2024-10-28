@@ -1,1 +1,1 @@
-![README](/Linux.jpg)
+![README](/img/Linux.jpg)
