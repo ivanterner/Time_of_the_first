@@ -1,1 +1,45 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install "ca-certificates" Last Version
+      when: (ansible_facts['distribution'] == "OracleLinux") or (ansible_os_family == "RED")
+      yum:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - "ca-certificates"
+        - "nss-tools.x86_64"
+    
+    - name: install ca package on debian systems
+      when: ansible_os_family == "Debian"
+      apt:
+        name: "ca-certificates"
+        state: present
+        update_cache: true
 
+    - name: Copy file certs
+      when: (ansible_facts['distribution'] == "OracleLinux") or (ansible_os_family == "RED")
+      copy:
+        src: "/etc/ansible/config/certs/{{ item }}"
+        dest: "/etc/pki/ca-trust/source/anchors/{{ item }}"
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - ".crt"
+        - ".crt"
+        - ".crt"
+
+    - name: Copy file certs
+      when: ansible_os_family == "Debian"
+      copy:
+        src: "/etc/ansible/config/certs/{{ item }}"
+        dest: "/usr/local/share/ca-certificates/{{ item }}"
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - ".crt"
+        - ".crt"
+        - ".crt"
