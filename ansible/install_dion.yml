@@ -1,1 +1,22 @@
-
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Execute wget distr
+      when: ansible_os_family in ["RedHat","RED"]	
+      command:
+        cmd: "{{ item }}"
+      loop:
+        - "wget -P /tmp https://static.dion.vc/desktop_app/dion-5.22.1.x86_64.rpm"
+    - name: install dion dion-5.22.1.x86_64.rpm  from a local file
+      when: ansible_os_family in ["RedHat","RED"]
+      yum:
+        name: "/tmp/dion-5.22.1.x86_64.rpm"
+        disable_gpg_check: true
+        state: present
+    - name: Remove file dion-5.22.1.x86_64.rpm
+      when: ansible_os_family in ["RedHat","RED"]	
+      file:
+        path: /tmp/dion-5.22.1.x86_64.rpm
+        state: absent
+...
