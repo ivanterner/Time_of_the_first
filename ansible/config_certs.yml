@@ -10,14 +10,12 @@
       loop:
         - "ca-certificates"
         - "nss-tools.x86_64"
-    
     - name: install ca package on debian systems
       when: ansible_os_family == "Debian"
       apt:
         name: "ca-certificates"
         state: present
         update_cache: true
-
     - name: Copy file certs
       when: (ansible_facts['distribution'] == "OracleLinux") or (ansible_os_family == "RED")
       copy:
@@ -30,7 +28,6 @@
         - ".crt"
         - ".crt"
         - ".crt"
-
     - name: Copy file certs
       when: ansible_os_family == "Debian"
       copy:
@@ -43,3 +40,13 @@
         - ".crt"
         - ".crt"
         - ".crt"
+    - name: Execute the command postinstall
+      when: (ansible_facts['distribution'] == "OracleLinux") or (ansible_os_family == "RED")
+      shell: "{{ item }}"
+      loop:
+        - "/usr/bin/update-ca-trust" 
+    - name: Execute the command postinstall
+      when: ansible_os_family == "Debian"
+      shell: "{{ item }}"
+      loop:
+        - "/usr/sbin/update-ca-certificates"
