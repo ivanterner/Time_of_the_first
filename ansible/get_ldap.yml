@@ -1,0 +1,48 @@
+---
+- name: Получение списка компьютеров из AD через ldapsearch и формирование инвентаря
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    ldap_user: "Администратор@domain.local"
+    ldap_password: "yourpassword"
+    base_dn: "DC=domain,DC=local"
+    ldap_server: "dc.domain.local"
+
+  tasks:
+    - name: Выполнить ldapsearch для получения компьютеров
+      shell: >
+        ldapsearch -x -H ldap://{{ ldap_server }} -D "{{ ldap_user }}" -w '{{ ldap_password }}' -b "CN=Computers,{{ base_dn }}" "(objectClass=computer)" cn
+      register: ldap_output
+
+    - name: Извлечь только имена компьютеров (cn)
+      set_fact:
+        computer_names: >-
+          {{ ldap_output.stdout_lines
+             | select('match', '^cn: [A-Za-z0-9-]+$')
+             | map('regex_replace', '^cn: ', '')
+             | list }}
+
+    - name: Преобразовать список в словарь с пустыми значениями
+      set_fact:
+        hosts_dict: {}
+
+    - name: Заполнить словарь именами хостов
+      set_fact:
+        hosts_dict: "{{ hosts_dict | combine({ item: {} }) }}"
+      loop: "{{ computer_names }}"
+
+    - name: Сформировать структуру инвентаря с хостами как ключами
+      set_fact:
+        ad_inventory:
+          all:
+            hosts: "{{ hosts_dict }}"
+
+    - name: Показать сформированный инвентарь для проверки
+      debug:
+        var: ad_inventory
+
+    - name: Сохранить YAML-инвентарь в файл
+      copy:
+        content: "{{ ad_inventory | to_yaml }}"
+        dest: "./ad_inventory.yml"
