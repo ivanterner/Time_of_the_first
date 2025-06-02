@@ -1,0 +1,55 @@
+---
+- name: "Ping hosts and save responsive hosts to inventory"
+  hosts: all                      # Проверяем все хосты из инвентаря
+  gather_facts: false             # Не собираем факты (для скорости)
+  any_errors_fatal: false         # Продолжаем, даже если есть ошибки
+  max_fail_percentage: 100        # Игнорируем любые сбои
+
+  vars:
+    # Настройки SSH для избежания зависаний
+    ansible_ssh_args: "-o ConnectTimeout=10 -o ConnectionAttempts=2 -o StrictHostKeyChecking=no"
+    # Путь к выходному файлу
+    output_file: "./responsive_hosts.txt"
+
+  tasks:
+    # Задача 1: Проверка доступности хоста через ping
+    - name: "Test host connectivity with ping"
+      ansible.builtin.ping:
+      register: ping_results       # Регистрируем результат
+      ignore_unreachable: true     # Игнорируем недоступные хосты
+      delegate_to: "{{ inventory_hostname }}"
+      async: 15                   # Таймаут задачи (секунд)
+      poll: 0                     # Не ждём завершения (асинхронно)
+
+    # Задача 2: Ждём завершения ping-проверки
+    - name: "Wait for ping results"
+      ansible.builtin.async_status:
+        jid: "{{ ping_results.ansible_job_id }}"
+      register: async_result
+      until: async_result.finished
+      retries: 3
+      delay: 5
+      ignore_errors: true
+      delegate_to: localhost
+
+    # Задача 3: Записываем отвечающие хосты в файл
+    - name: "Add responsive hosts to inventory file"
+      ansible.builtin.lineinfile:
+        path: "{{ output_file }}"
+        line: "{{ inventory_hostname }}"
+        create: true
+        state: present
+      when: 
+        - async_result is defined
+        - async_result.finished
+        - async_result.get('rc', 1) == 0       # Код возврата 0 = успех
+        - async_result.get('ping', '') == 'pong'
+      delegate_to: localhost
+      run_once: true
+
+    # Задача 4 (опционально): Выводим список отвечающих хостов
+    - name: "Display responsive hosts"
+      ansible.builtin.debug:
+        msg: "Responsive hosts saved to {{ output_file }}"
+      run_once: true
+      delegate_to: localhost
