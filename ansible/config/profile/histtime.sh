@@ -1,1 +1,1 @@
-export HISTTIMEFORMAT='%h %d %H:%M:%S '
+export HISTTIMEFORMAT='%h %d %H:%M:%S $SSH_CONNECTION '
